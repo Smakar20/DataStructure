@@ -40,5 +40,15 @@ function append(head, val){
 append(n4, 5)
 
 console.log('-----------------------------------------------')   
-   
+/* Given a node prev_node, insert a new node after the given prev_node. */
+
+function insertAfter(prev, val){
+  if(prev == null) return
+  var newNode = new Node(val, null)
+  newNode.next = prev.next
+  prev.next = newNode
+  console.log('prev: ', prev)
+}
+
+insertAfter(n3, 5)   
    
