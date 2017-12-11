@@ -1,6 +1,6 @@
 # DataStructure
 
-##Linked list
+#Linked list:
 A linked list is a data structure which consists of a group of nodes where each node may point to some other node to form a sequence.
 1. a "data" field which will store our data (string, number, etc.)
 2. a "next" field which will be a reference to some other node
