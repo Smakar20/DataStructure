@@ -27,6 +27,7 @@ function deque(){
   var result = head.data
   head = head.next
   if(head == null) tail = null
+  return result
 }
 //to empty the linked list
 function empty(){
