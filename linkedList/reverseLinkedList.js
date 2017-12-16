@@ -45,6 +45,20 @@ function reversedLinked(head)
 	}
 	return previous;
 }
+//altername method - start
+function reversedLinked(head){
+  if(head == null) return 'head can not be null'
+  var prev = null
+  var current = head
+  while(current != null){
+    var temp = current.next
+    current.next = prev
+    prev = current
+    current = temp
+  }
+  return prev
+}
+//altername method - end
 
 //function to print linked list node values
 function print(head)
