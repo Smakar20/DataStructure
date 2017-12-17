@@ -10,3 +10,11 @@ A linked list is a data structure which consists of a group of nodes where each 
 - It is easy to insert and delete elements in Linked List.
 - Random access is not allowed in a typical implementation of Linked Lists.
 - The size of array has to be pre-decided, linked lists can change their size any time.
+
+## Trees:
+A binary tree is composed of tree nodes. Tree nodes consist of a data member variable and the address of 2 other nodes (called as children and are distinguished as left and right.)
+
+- Note: A binary search tree is balanced when for every node, the depth of the sub-trees from the left child and right child differ by at most 1.
+Insertion in a binary search tree is logarithmic time operation. An insertion requires search to identify which node in a tree will become the parent of the inserted node. After a parent node is identified by the find operation, only a constant number of operations are required to do the insertion.
+
+Algorithms on linked list are iterative whereas operations on trees are often recursive.
