@@ -1,4 +1,5 @@
-/*Reverse a linked list from position m to n. Do it in-place and in one-pass.
+/*Reverse a linked list from position m to n. Do it in-place and in 
+one-pass.
 
 For example:
 Given 1->2->3->4->5->NULL, m = 2 and n = 4,
@@ -21,10 +22,14 @@ var n5 = new Node(1,n4)
 function reverseBetween(head, m, n){
   print(head)
   if(!head) return 'head can not be null'
+  if(m==1 && n==1){
+    return head
+  }
   var i = 1,
   current = head,
   tail = null,
   prev = null
+
   while(i < m){
     tail = current
     current = current.next
@@ -38,9 +43,15 @@ function reverseBetween(head, m, n){
     current = temp
     i++
   }
-  console.log('--------------')
-  tail.next = prev
-  while(tail.next !=null){
+  
+  if(m == 1){
+    tail = prev
+    head = tail
+  }else{
+    tail.next = prev
+  }
+  
+  while(tail.next){
     tail = tail.next
   }
   tail.next = current
