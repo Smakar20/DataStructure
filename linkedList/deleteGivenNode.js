@@ -15,15 +15,8 @@ class Node{
 
 var deleteNode = function(node) {
     var current = node,
-        prev = null
-    while(current.next){
-        var value = current.val
-        current.val = current.next.val
-        current.next.val = value
-        prev = current
-        current = current.next
-    }
-    prev.next = null
+    current.val = current.next.val
+    current.next = current.next.next
     //return node
 }
 
