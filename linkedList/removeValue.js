@@ -16,7 +16,6 @@ function removeValue(head, val){
   if(head == null) return 'head can not be null'
   if(head != null && head.data == val){
     head = head.next
-    return head
   }
   var current = head
   while(current != null && current.next != null){
