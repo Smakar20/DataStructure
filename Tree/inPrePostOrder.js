@@ -34,6 +34,17 @@ function preOrder(root){
   console.log(root.val)
   if(root.left) preOrder(root.left)
   if(root.right) preOrder(root.right)
+  //alternate method without recursion: - Start
+  if(!root) return
+  var arr = [root]
+  while(true){
+    var current = arr.pop()
+    if(!current) break
+    console.log(current.val)
+    if(current.right) arr.push(current.right)
+    if(current.left) arr.push(current.left)
+  }
+  //alternate method: - End
 }
 
 function postOrder(root){
