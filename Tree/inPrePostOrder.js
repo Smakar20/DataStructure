@@ -45,8 +45,8 @@ function postOrder(root){
 
 //------ test --------
 console.log('-----inOrder-------')
-inOrder(root)
+inOrder(root) //4 2 5 1 3
 console.log('-----preOrder-------')
-preOrder(root)
+preOrder(root) //1 2 4 5 3
 console.log('-----postOrder--------------')
-postOrder(root)
+postOrder(root) //4 5 2 3 1
