@@ -35,7 +35,19 @@ function lowestCommonAncestor(root,v1,v2){
       return root
     }
   }
-  return null
+}
+
+
+//alternate method using recursion
+function lowestCommonAncestor(root,v1,v2){
+  if(!root) return 'root can not be null'
+  if(root.val > v1 && root.val > v2 && root.left){
+    return lowestCommonAncestor(root.left,v1,v2)
+  } 
+  if(root.val < v1 && root.val < v2 && root.right){
+    return lowestCommonAncestor(root.right,v1,v2)
+  }
+  return root
 }
 
 //------ test --------
