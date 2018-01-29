@@ -61,4 +61,4 @@ function find(root){
 }
 
 
-console.log('itterative', find(root1)) //[ 1, 3, 5, 7, 9 ]
+console.log('iterative', find(root1)) //[ 1, 3, 5, 7, 9 ]
