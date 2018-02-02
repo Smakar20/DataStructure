@@ -21,7 +21,8 @@ function findNodeDfs(root, node){
   for(var n of root.neighbors){
     if(!n.visited){ 
       n.visited = true
-      return findNodeDfs(n, node)
+      var found = findNodeDfs(n, node)
+      if(found) return true
     }
   }
   return false
@@ -30,5 +31,5 @@ function findNodeDfs(root, node){
 
 //console.log(a)
 d = new GraphNode('d')
-c.neighbors.add(d)
-findNodeDfs(a, d)
+//a.neighbors.add(d)
+findNodeDfs(a, c)
