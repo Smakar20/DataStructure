@@ -54,6 +54,6 @@ function findWords(root, output){
 
 //----- test -----
 var root = build(['a','are','base','basement','area'])
-prefixSearch(root, 'base')
+prefixSearch(root, 'base') //[ 'base', 'basement' ]
 
 
