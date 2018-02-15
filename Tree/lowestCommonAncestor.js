@@ -24,6 +24,7 @@ left.insertRight(3)
 right.insertLeft(5)
 right.insertRight(7)
 
+//-------lowest common ancestor in binary tree---------
 var lowestCommonAncestor = function(root, p, q) {
     if (root == null || root == p || root == q) return root
     var left = lowestCommonAncestor(root.left, p, q)
@@ -31,7 +32,7 @@ var lowestCommonAncestor = function(root, p, q) {
     return left == null ? right : right == null ? left : root
 }
 
-//---------alternate method--------------
+//---------LCA in BST--------------
 function lowestCommonAncestor(root,v1,v2){
   if(!root) return 'root can not be null'
   while(root){
