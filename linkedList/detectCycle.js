@@ -10,26 +10,21 @@ Can you solve it without using extra space?*/
       this.next = null;
   }
 
-var detectCycle = function(head) {
-    var fast = head
-    var slow = head
-    var isCycle = false
-    while(fast && fast.next){
-        fast = fast.next.next
-        slow = slow.next
-        if(fast == slow){
-            isCycle = true
-            break
-        }
-    }
-    
-    if(!isCycle) return null
-    var slow = head
-    while(fast){
-        if(fast == slow) return slow
-        fast = fast.next
-        slow = slow.next
-    }
-    return null
+let detectCycle = function(head) {
+  let [slow, fast, hasCycle] = [head, head, false];
+	while (fast && fast.next) {
+		slow = slow.next;
+		fast = fast.next.next;
+		if (fast === slow) {
+			hasCycle = true;
+			break;
+		};
+	}
+	if (!hasCycle) return null;
+	slow = head;
+	while (fast !== slow) {
+		fast = fast.next;
+		slow = slow.next;
+	}
+	return fast;
 };
-
