@@ -23,29 +23,7 @@ function linkedList(arr)
 	return head;
 }
 
-//function to reverse a linked list
-function reversedLinked(head)
-{
-	if(head === null)
-	{
-		return head;
-	}
-	var current = head;
-	var previous = null;
-	var advance = head.next;
-	while(current !== null)
-	{
-		current.next = previous;
-		previous = current;
-		current = advance;
-		if(advance !== null)
-		{
-			advance = advance.next;
-		}
-	}
-	return previous;
-}
-//altername method - start
+//iteative approach
 function reversedLinked(head){
   if(head == null) return 'head can not be null'
   var prev = null
@@ -58,7 +36,14 @@ function reversedLinked(head){
   }
   return prev
 }
-//altername method - end
+
+//recursive approach
+function reversedLinked(head, newHead = null) {
+    if (!head) return newHead;
+    let node = head.next;
+    head.next = newHead;
+    return reversedLinked(node, head);
+}
 
 //function to print linked list node values
 function print(head)
