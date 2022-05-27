@@ -7,40 +7,56 @@ class Node{
   }
 }
 
-var n1 = new Node(4, null),
-n2 = new Node(2, n1),
-n3 = new Node(1, n2)
-var head1 = n3
-var n4 = new Node(5, null),
-n5 = new Node(4, n4),
-n6 = new Node(3, n5),
-head2 = n6
+//iterative
+// Time: O(n + m) | Space: O(1)
+var mergeTwoLists = function(list1, list2) {
+    if (!list1 && !list2) return null;
+    if (!list1) return list2;
+    if(!list2) return list1;
+    let output, current, node;
+    while(list1 && list2) {
+        if (list1.val < list2.val) {
+            node = new ListNode(list1.val);
+            list1 = list1.next;
+        }  else {
+            node = new ListNode(list2.val);
+            list2 = list2.next;
+        }
 
-function merge(head1, head2){
-  if(head1 == null && head2 == null) return 'can not merge anything'
-  if(head1 == null || head2 == null) return (head1 == null) ? head2 : head1
-  
-  while(head1 != null){
-    if(head1.data <= head2.data){
-      head2 = new Node(head1.data, head2)
+        if (!output) {
+            current = node;
+            output = current;
+        } else {
+            current.next = node;
+            current = current.next;
+        }
     }
-    else{
-      var current = head2
-      while(current.next != null && current.next.data < head1.data) current = current.next
-      current.next = new Node(head1.data, current.next)
+    
+    if (list1) {
+        current.next = list1;
     }
-    head1 = head1.next
-  }
-  print(head2)
-  return head2
-}
+    if (list2) {
+        current.next = list2;
+    }
+    return output;
+};
 
-function print(head){
-  while(head != null){
-    console.log('head: ', head.data)
-    head = head.next
-  }
-}
+//recursive
+// Time: O(n + m) | Space: O(n + m)
+var mergeTwoLists = function(l1, l2) {
+    if (l1 == null) {
+        return l2;
+    }
+    else if (l2 == null) {
+        return l1;
+    }
+    else if (l1.val < l2.val) {
+        l1.next = mergeTwoLists(l1.next, l2);
+        return l1;
+    }
+    else {
+        l2.next = mergeTwoLists(l1, l2.next);
+        return l2;
+    }
 
-//---------test-------------
-merge(head1, head2)
+}
