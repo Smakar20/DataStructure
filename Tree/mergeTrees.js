@@ -34,6 +34,7 @@ Merged tree:
 Note: The merging process must start from the root nodes of both trees.
 
  */
+// mutating existing tree
 var mergeTrees = function(t1, t2) {
     if(!t1) return t2;
     if(!t2) return t1;
@@ -42,3 +43,13 @@ var mergeTrees = function(t1, t2) {
     t1.right = mergeTrees(t1.right, t2.right);
     return t1;
 };
+
+// return a new tree
+function mergeTrees(tree1, tree2) {
+  if (!tree1) return tree2;
+  if (!tree2) return tree1;
+  let mergedTree = new TreeNode(tree1.value + tree2.value);
+  mergedTree.left = mergeTrees(tree1.left, tree2.left);
+  mergedTree.right = mergeTrees(tree1.right, tree2.right);
+  return mergedTree;
+}
