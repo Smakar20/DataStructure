@@ -7,69 +7,66 @@ class Trie{
 }
 
 //---build tree -----
-function build(arrWords){
-  var root = new Trie()
-  arrWords.forEach((word)=>{
-    insertIntoTrie(root,word)
-  })
-  return root
+function build(words) {
+  let root = new Trie();
+  words.forEach((word) => insertIntoTrie(root, word));
+  return root;
 }
 
-function insertIntoTrie(root, word){
-  if(word == ''){
-    root.isWord = true
-    return
+function insertIntoTrie(root, word) {
+  if (word === '') {
+    root.isWord = true;
+    return;
   }
-  var node = root.children.get(word[0])
-  if(node == undefined){
-    node = new Trie()
-    root.children.set(word[0], node)
+  let node = root.children.get(word[0]);
+  if (!node) {
+    node = new Trie();
+    root.children.set(word[0], node);
   }
-  insertIntoTrie(node, word.slice(1))
+  insertIntoTrie(node, word.slice(1));
 }
 
 // --------- search in trie ----------
-function searchWord(root, word){
-  if(word == '' && root.isWord) return true
+function searchWord(root, word) {
+  if (word === '' && root.isWord) return true;
   
-  if(word[0] == '.'){
-    for(v of root.children.values()){
-      if (searchWord(v, word.slice(1))) return true
+  if (word[0] == '.') {
+    for(let v of root.children.values()){
+      if (searchWord(v, word.slice(1))) return true;
     }
-    return false
+    return false;
   }
   
-  var node = root.children.get(word[0])
-  if(node){
-    return searchWord(node,word.slice(1))
+  let node = root.children.get(word[0]);
+  if (!!node) {
+    return searchWord(node, word.slice(1));
   }
 
-  return false
+  return false;
 }
 
 //--------------longest common---------------------
-function longestCommon(root,word){
-  var output = []
-  longestCommonUtil(root,word,output,[])
-  return output
+function longestCommon(root, word) {
+  let output = [];
+  longestCommonUtil(root, word, output, '');
+  return output[0];
 }
 
-function longestCommonUtil(root, word, output, current){
-  if(root.isWord){
-    output.pop()
-    output.push(current.slice())
+function longestCommonUtil(root, word, output, current) {
+  if (root.isWord) {
+    output.pop();
+    output.push(current);
   }
-  if(word == '') return
+  if (word == '') return;
   
-  var node = root.children.get(word[0])
-  if(node){
-    current.push(word[0])
-    longestCommonUtil(node,word.slice(1), output, current)
-    current.pop()
+  let node = root.children.get(word[0]);
+  if (!!node) {
+    current += word[0];
+    longestCommonUtil(node, word.slice(1), output, current)
   }
 }
 
 //----- test -----
-var root = build(['are','base','basement','area','ab'])
+let root = build(['are','base','basement','area','ab'])
 longestCommon(root, 'baseme') //'base'
 //searchWord(root, '...') //true
